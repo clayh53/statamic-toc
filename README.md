@@ -56,7 +56,7 @@ Then the page template would look like:
 </article>
 ```
 
-You get the idea.
+You get the idea. This could also be used for some on-page navigation for longer articles with some CSS-fu to move the table of contents to the side of of the content.
 
 ### What it looks like
 
