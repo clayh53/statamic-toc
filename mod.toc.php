@@ -4,13 +4,20 @@
  * generates table of contents from headings in content
  * creates table of contents div with links to sections 
  * and inserts 'to top' link after each heading to return
- * the reader to the top of the page 
+ * the reader to the top of the page
+ *
+ * returns the table of contents in a div of class .toc-block
+ * and the ol list elements within are assigned a class of
+ * .toc for ease in styling the look of the table of contents.
  * 
  * @author  Clay Harmon
  *
  * Add-in borrows heavily from Joost de Valk's 
  * Create Table of Contents located here:
  * http://www.westhost.com/contest/php/function/create-table-of-contents/124
+ * modifications to original center around appending a return link at the
+ * end of each section heading, and fixing behavior where descendant <ol> elements
+ * did not have a 'toc' class appended to them
  */
 class Modifier_toc extends Modifier
 {
@@ -29,7 +36,7 @@ class Modifier_toc extends Modifier
         {	
 	        $fully_cooked = create_toc($value);
 
-            $modified = $fully_cooked['toc'].$fully_cooked['content'];
+            $modified = "<div class='toc-block'>".$fully_cooked['toc']."</div>".$fully_cooked['content'];
 	       	        
 	        return $modified;
     	}
@@ -90,7 +97,7 @@ function create_toc( $content ) {
  
         if ($i > 0) {
             if ($prevlvl < $lvl) {
-                $toc .= "\n"."<ol>"."\n";
+                $toc .= "\n"."<ol class='toc'>"."\n";
             } else if ($prevlvl > $lvl) {
                 $toc .= '</li>'."\n";
                 while ($prevlvl > $lvl) {

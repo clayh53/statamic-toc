@@ -4,7 +4,7 @@
 
 This modifier takes the content piped to it, scans the content for headings and creates an ordered hierarchical list of links to the content areas for each heading level in the document. 
 
-This modifier then creates a clickable table of contents using this list whose anchor tags link to the specific positions in the content referenced in the table of contents. This table of contents is returned *at the top* of the original content, and the original content is returned below the table of contents with its heading tags modified with ids so the user can click and immediately move the cursor to that position in the document.
+This modifier then creates a clickable table of contents using this list whose anchor tags link to the specific positions in the content referenced in the table of contents. This table of contents is returned *at the top* of the original content in a div with a class name of *toc-block*, and the original content is returned below the table of contents with its heading tags modified with ids so the user can click and immediately move the cursor to that position in the document.
 
 ### Installation
 
@@ -22,7 +22,7 @@ Typical use inside a template might look like this:
 </article>
 ```	
 
-If you want the table of contents to be optionally displayed in a template, create a YAML field in the YAML front matter named something like 'toc', and check for it in your template code. If turned on, display the content with the toc filter, otherwise, don't.
+To conditionally display the table of contents in a template, create a YAML field in the YAML front matter named something like 'toc', and check for it in the template code. If turned on, display the content with the toc filter, otherwise, don't.
 
 So the YAML front matter might look like this for a file:
 
@@ -58,11 +58,35 @@ Then the page template would look like:
 
 You get the idea. This could also be used for some on-page navigation for longer articles with some CSS-fu to move the table of contents to the side of of the content.
 
-### What it looks like
+### Basic example with some styling
+
+The plugin returns the table of contents block with a class of *toc-block*. The div itself can be targeted using this class selector and setting the width and float it right, for instance.  In a similar manner, the ```<ol>``` elements can be targeted using the class selector *toc*.
+
+An example CSS setup might look like this:
+
+```
+.toc-block {
+	width: 33%;
+	background-color: #efefef;
+	float:right;
+	padding:1em ;
+}
+.toc{
+	font-size: 0.9em;
+}
+```
+
+This will create a table of contents at the top of the page that looks like this:
+
+
+![Example of table of contents](toc.png)
+
+
+### Cautions
 
 Note that Statamic modifiers should have **NO** spaces between before or after the pipe ```'|'```!
 
-Also note that if you are chaining modifiers like "widont", this should come last in the chain. In other words, the tag should look like ```{{content|widont|toc}}```. 
+Also note that if when chaining modifiers like *widont*, the *toc* modifier should come last in the chain. In other words, the tag should look like ```{{content|widont|toc}}```. 
 
 
 
