@@ -22,6 +22,42 @@ Typical use inside a template might look like this:
 </article>
 ```	
 
+If you want the table of contents to be optionally displayed in a template, create a YAML field in the YAML front matter named something like 'toc', and check for it in your template code. If turned on, display the content with the toc filter, otherwise, don't.
+
+So the YAML front matter might look like this for a file:
+
+```
+---
+title: a post
+_template:page
+toc: true
+---
+## Heading one
+
+content, blah, blah
+
+### Heading two
+
+content blah, blah, etc....
+```
+
+Then the page template would look like:
+
+```
+<article>
+	<h1>{{title}}</h1>
+	if( {{toc}} )
+	{
+		{{content|toc}}
+	{
+	else
+	{{content}}
+}
+</article>
+```
+
+You get the idea.
+
 ### What it looks like
 
 Note that Statamic modifiers should have **NO** spaces between before or after the pipe ```'|'```!
