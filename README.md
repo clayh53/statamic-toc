@@ -84,7 +84,7 @@ This will create a table of contents at the top of the page that looks like this
 
 ### Cautions
 
-Note that Statamic modifiers should have **NO** spaces between before or after the pipe ```'|'```!
+Note that Statamic modifiers should have **NO** spaces before or after the pipe ```'|'```!
 
 Also note that if when chaining modifiers like *widont*, the *toc* modifier should come last in the chain. In other words, the tag should look like ```{{content|widont|toc}}```. 
 
