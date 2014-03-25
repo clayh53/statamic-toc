@@ -84,8 +84,9 @@ function create_toc( $content ) {
         if ( $add_id ) {
             // This section is where you can mess with the 'to home arrow and remove it entirely if you don't want it
             // It is in the <span><a href="#.... section on the next line. Add a class to the span if you want to style it in your CSS
-            $content = substr_replace( $content, '<h'.$lvl.' id="'.$anchor.'"'.$heading[2].'>'.$heading[3].'<span class="toc-arrow"><a href="#">&uarr;</a></span></h'.'>', strpos( $content, $heading[0] ), strlen( $heading[0] ) );
-        	
+            $content = substr_replace( $content, '<h'.$lvl.' id="'.$anchor.'"'.$heading[2].'>'.$heading[3].'<span class="toc-arrow"><a href="#">&uarr;</a></span></h'.$lvl.'>', strpos( $content, $heading[0] ), strlen( $heading[0] ) );
+
+        
         }
  
         $ret = preg_match( '/title=[\'|"](.*)?[\'|"]/i', stripslashes( $heading[2] ), $title );
