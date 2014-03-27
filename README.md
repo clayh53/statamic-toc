@@ -46,7 +46,7 @@ Then the page template would look like:
 ```
 <article>
 	<h1>{{title}}</h1>
-	if( {{toc}} )
+	if{{ toc == 'true'}}
 	{
 		{{content|toc}}
 	{
@@ -60,7 +60,7 @@ You get the idea. This could also be used for some on-page navigation for longer
 
 ### Basic example with some styling
 
-The plugin returns the table of contents block with a class of *toc-block*. The div itself can be targeted using this class selector and setting the width and float it right, for instance.  In a similar manner, the ```<ol>``` elements can be targeted using the class selector *toc*.
+The plugin returns the table of contents block with a class of *toc-block* and the original content with a class of *content-block*. The classes enable the divs to be targeted using the appropriate class selector, and allow setting the width and float properties for each block.  In a similar manner, the ```<ol>``` elements can be targeted using the class selector *toc*.
 
 An example CSS setup might look like this:
 

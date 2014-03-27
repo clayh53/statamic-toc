@@ -36,7 +36,7 @@ class Modifier_toc extends Modifier
         {	
 	        $fully_cooked = create_toc($value);
 
-            $modified = "<div class='toc-block'>".$fully_cooked['toc']."</div>".$fully_cooked['content'];
+            $modified = "<div class='toc-block'>".$fully_cooked['toc']."</div>"."<div class='content-block'>".$fully_cooked['content']."</div>";
 	       	        
 	        return $modified;
     	}
